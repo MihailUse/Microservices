@@ -1,0 +1,40 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "apigateway",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
+      "serviceActions": {
+        "apigateway": "StartDebugging",
+        "authmicroservice": "StartDebugging",
+        "equipmentmicroservice": "StartDebugging"
+      }
+    },
+    "Auth": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "authmicroservice",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
+      "serviceActions": {
+        "apigateway": "DoNotStart",
+        "authmicroservice": "StartDebugging",
+        "equipmentmicroservice": "DoNotStart"
+      }
+    },
+    "equipment": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "equipmentmicroservice",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
+      "serviceActions": {
+        "apigateway": "DoNotStart",
+        "authmicroservice": "DoNotStart",
+        "equipmentmicroservice": "StartDebugging"
+      }
+    }
+  }
+}

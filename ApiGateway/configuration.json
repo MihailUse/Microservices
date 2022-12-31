@@ -1,0 +1,53 @@
+{
+  "Routes": [
+    {
+      "SwaggerKey": "auth",
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authmicroservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/auth/{everything}",
+      "UpstreamHttpMethod": [ "POST", "GET" ]
+    },
+    {
+      "SwaggerKey": "equipment",
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipmentmicroservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/equipment/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "auth",
+      "Config": [
+        {
+          "Name": "Auth API",
+          "Version": "v1",
+          "Url": "http://localhost/auth/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "equipment",
+      "Config": [
+        {
+          "Name": "Equipment API",
+          "Version": "v1",
+          "Url": "http://localhost/equipment/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {}
+}

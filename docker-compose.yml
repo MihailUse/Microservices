@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    depends_on:
+      - equipmentmicroservice
+
+  authmicroservice:
+    image: ${DOCKER_REGISTRY-}authmicroservice
+    build:
+      context: .
+      dockerfile: AuthMicroservice/Dockerfile
+
+  equipmentmicroservice:
+    image: ${DOCKER_REGISTRY-}equipmentmicroservice
+    build:
+      context: .
+      dockerfile: EquipmentMicroservice/Dockerfile

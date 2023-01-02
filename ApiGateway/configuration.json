@@ -11,7 +11,10 @@
         }
       ],
       "UpstreamPathTemplate": "/auth/{everything}",
-      "UpstreamHttpMethod": [ "POST", "GET" ]
+      "UpstreamHttpMethod": [
+        "POST",
+        "GET"
+      ]
     },
     {
       "SwaggerKey": "equipment",
@@ -24,7 +27,16 @@
         }
       ],
       "UpstreamPathTemplate": "/equipment/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     }
   ],
   "SwaggerEndPoints": [

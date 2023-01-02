@@ -76,7 +76,7 @@ public class Program
         {
             if (scope != null)
             {
-                DataContext db = scope.ServiceProvider.GetRequiredService<DataContext>();
+                var db = scope.ServiceProvider.GetRequiredService<DataContext>();
                 db.Database.Migrate();
             }
         }

@@ -18,7 +18,7 @@
     },
     {
       "SwaggerKey": "equipment",
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -26,7 +26,43 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/equipment/{everything}",
+      "UpstreamPathTemplate": "/equipment/api/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "SwaggerKey": "equipment",
+      "DownstreamPathTemplate": "/swagger/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipmentmicroservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/equipment/swagger/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    {
+      "SwaggerKey": "equipment",
+      "DownstreamPathTemplate": "/auth/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipmentmicroservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/equipment/auth/{everything}",
       "UpstreamHttpMethod": [
         "GET",
         "POST",

@@ -16,7 +16,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:443;http://+:80
-      - ConnectionStrings__DefaultConnection=Server=host.docker.internal;Port=5432;Database=AuthMicroservice;User Id=postgres;Password=root
     ports:
       - "80"
       - "443"

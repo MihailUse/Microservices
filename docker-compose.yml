@@ -5,7 +5,7 @@ services:
     image: ${DOCKER_REGISTRY-}apigateway
     build:
       context: .
-      dockerfile: ApiGateway/Dockerfile
+      dockerfile: Gateways/ApiGateway/Dockerfile
     depends_on:
       - equipmentmicroservice
 
@@ -13,10 +13,10 @@ services:
     image: ${DOCKER_REGISTRY-}authmicroservice
     build:
       context: .
-      dockerfile: AuthMicroservice/Dockerfile
+      dockerfile: Microservices/AuthMicroservice/Dockerfile
 
   equipmentmicroservice:
     image: ${DOCKER_REGISTRY-}equipmentmicroservice
     build:
       context: .
-      dockerfile: EquipmentMicroservice/Dockerfile
+      dockerfile: Microservices/EquipmentMicroservice/Dockerfile

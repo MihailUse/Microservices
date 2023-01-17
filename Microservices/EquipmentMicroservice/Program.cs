@@ -1,4 +1,6 @@
+using EquipmentMicroservice.DAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -9,15 +11,29 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        if (connectionString == null)
+            throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
         // Add services to the container.
-
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connectionString));
+
         builder.Services.AddSwaggerGen(SetupSwaggerAction);
+        builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 
         var app = builder.Build();
+
+        // update database
+        using (var scope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope())
+        {
+            if (scope != null)
+            {
+                var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+                db.Database.Migrate();
+            }
+        }
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())

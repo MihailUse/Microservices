@@ -32,6 +32,28 @@
         "POST",
         "PUT",
         "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "SwaggerKey": "equipment",
+      "DownstreamPathTemplate": "/test/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipmentmicroservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/equipment/test/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
       ]
     },
     {
@@ -51,28 +73,6 @@
         "PUT",
         "DELETE"
       ]
-    },
-    {
-      "SwaggerKey": "equipment",
-      "DownstreamPathTemplate": "/auth/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "equipmentmicroservice",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/equipment/auth/{everything}",
-      "UpstreamHttpMethod": [
-        "GET",
-        "POST",
-        "PUT",
-        "DELETE"
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
     }
   ],
   "SwaggerEndPoints": [
